@@ -85,17 +85,6 @@ const Fr = () => {
 
           <br />
           <small>
-            From compact essentials to spacious organizers,
-            <br /> we craft each pouch with care and precision.
-          </small>
-          <br />
-
-          <small>
-            Visit us online to explore our versatile collection
-            <br /> made to suit every lifestyle.
-          </small>
-          <br />
-          <small>
             Thank you for choosing us to carry your essentials
             <br /> in style!
           </small>
