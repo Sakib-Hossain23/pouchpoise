@@ -758,7 +758,7 @@ const Checkout = ({ cart, updateCart, setOrderHistory }) => {
         <div className="alert">
           For any order-related questions, contact customer service at{" "}
           <strong>
-            <span style={{ color: "#ff7601" }}>+8800000000000</span>
+            <span style={{ color: "#ff7601" }}>+8801945552594</span>
           </strong>
         </div>
 
