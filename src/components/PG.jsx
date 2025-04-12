@@ -8,7 +8,7 @@ const PG = () => {
         <h1 className={styles.mainTitle}>
           <span style={{ color: "#f27f20" }}> Popular </span>
           Pouches for Everyday Use
-          <span style={{ color: "#f27f20" }}> Retail & Online </span> Shop
+          <span style={{ color: "#f27f20" }}> Online </span> Shop
         </h1>
       </header>
 
