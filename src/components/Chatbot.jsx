@@ -9,7 +9,7 @@ const Chatbot = () => {
 
   const phoneNumber = "+8801704354694";
   const whatsappMessage = encodeURIComponent(
-    "Hello, I am interested in Gadget Galaxy!"
+    ""
   );
   const facebookPage = "your-facebook-page-id"; // Replace with your Facebook page ID or username
 
