@@ -331,10 +331,10 @@ h2 {
 
 .return-home-btn {
   padding: 10px 20px;
-  background-color: orange;
+  background-color: #f27f20;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 2px;
   font-size: 1rem;
   cursor: pointer;
 }
