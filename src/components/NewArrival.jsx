@@ -28,61 +28,6 @@ function Products({ addToCart }) {
 
   const products = [
     {
-      id: 8,
-      name: "Shoulder bag",
-      brand: "Bag",
-      price: ["850৳"],
-      oldPrice: [""],
-      image: "/img/pp24.jpg",
-      images: ["/img/pp24.jpg"],
-      model: {
-        color: "Red",
-      },
-
-      stock: "in-stock",
-      colors: ["Red"],
-
-      specifications: {
-        Origin: "China",
-        Material: "PU leather",
-        Height: " ↕️ 5.1 inch",
-        Width: "↔️ 11.2 inch",
-        Use: "One shoulder/hand held",
-        Capacity: "Mobile phones, wallets, lipsticks, keys etc",
-      },
-
-      description: "This bag Designed to compliment your every look 🌸🫶💯",
-    },
-
-    {
-      id: 9,
-      name: "Shoulder bag",
-      brand: "Bag",
-      price: ["850৳"],
-      oldPrice: [""],
-      image: "/img/pp25.jpg",
-      images: ["/img/pp25.jpg"],
-      model: {
-        color: "Blue",
-      },
-
-      stock: "in-stock",
-      colors: ["Blue"],
-
-      specifications: {
-        Origin: "China",
-        Material: "PU leather",
-        Height: " ↕️ 6 inch",
-        Width: "↔️ 7.6 inch",
-        Use: "One shoulder/hand held",
-        Capacity: " Mobile phones, lipsticks etc",
-      },
-
-      description:
-        "A bag designed for the woman who knows style and substance. 🌸🎀",
-    },
-
-    {
       id: 6,
       name: "Shoulder bag",
       brand: "Bag",
