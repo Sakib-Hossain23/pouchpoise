@@ -348,6 +348,35 @@ const ModalPage = ({ addToCart, products }) => {
               </span>
             </p>
 
+            {product.features && (
+              <div
+                className="product-features"
+                style={{ margin: "16px 0", marginTop: "-15px" }}
+              >
+                <h4
+                  style={{
+                    marginBottom: "8px",
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    color: "#1f2937",
+                  }}
+                >
+                  Details:
+                </h4>
+                <h5
+                  style={{
+                    fontSize: "14px",
+                    color: "#4b5563",
+                    lineHeight: "1.5",
+                    marginTop: "0",
+
+                    marginBottom: "-7px",
+                  }}
+                >
+                  {product.features}
+                </h5>
+              </div>
+            )}
             {/* WhatsApp Chat Button */}
             <div
               className={`whatsapp-chat-container ${
@@ -449,7 +478,7 @@ const ModalPage = ({ addToCart, products }) => {
               style={{
                 marginTop: "12px",
                 marginBottom: "8px",
-                marginLeft: "8px",
+                marginLeft: "2px",
               }}
               className="quantity-controls"
             >
