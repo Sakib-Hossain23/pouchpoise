@@ -48,6 +48,8 @@ function Products({ addToCart }) {
       },
 
       stock: "in-stock",
+      features:
+        "Made from premium PU leather in a charming cream color, this compact bag features an adjustable strap, spacious interior with inner pocket, and a secure zipper closure—blending elegance with everyday functionality.",
       colors: ["Cream"],
 
       specifications: {
@@ -72,6 +74,8 @@ function Products({ addToCart }) {
         color: "Black",
       },
       stock: "in-stock",
+      features:
+        "Crafted from premium PU leather in a sleek black finish, this stylish bag offers a compact 11x5 inch design with an adjustable strap, inner pocket for essentials, and a secure zipper—perfect for adding a touch of elegance to any look.",
       colors: ["Black"],
 
       specifications: {
@@ -98,6 +102,9 @@ function Products({ addToCart }) {
       },
 
       stock: "in-stock",
+      features:
+        "Made from high-quality PU leather in a crisp white shade, this compact 11x5 inch bag features an adjustable strap, secure zipper closure, and an inner pocket—delivering a perfect mix of elegance and everyday charm.",
+
       colors: ["White"],
 
       specifications: {
@@ -124,6 +131,9 @@ function Products({ addToCart }) {
       },
 
       stock: "in-stock",
+      features:
+        "Made from premium PU leather in a soft light pink shade, this stylish 11.7x5.6 inch bag features a spacious 5-inch inner compartment, adjustable strap, and secure zipper closure—designed to impress and made to adore.",
+
       colors: ["Light Pink"],
 
       specifications: {
@@ -151,6 +161,9 @@ function Products({ addToCart }) {
       },
 
       stock: "in-stock",
+      features:
+        "Crafted from glossy PU leather, this bold and compact 9.5x5.5 inch bag is effortlessly stylish. It features an adjustable strap, secure zipper closure, and a well-organized interior—perfect for your standout look.",
+
       colors: ["Black"],
 
       specifications: {
@@ -176,6 +189,9 @@ function Products({ addToCart }) {
       },
 
       stock: "in-stock",
+      features:
+        "Made from glossy PU leather in a striking red shade, this 9.5x5.5 inch bag features an adjustable strap, secure zipper closure, and a sleek, stylish design that perfectly complements your bold personality.",
+
       colors: ["Red"],
 
       specifications: {
@@ -206,6 +222,9 @@ function Products({ addToCart }) {
       },
 
       stock: "in-stock",
+      features:
+        "Crafted from durable PU leather in a clean white shade, this 8.7x5.1 inch bag offers a sleek, stylish design with an adjustable strap and secure zipper closure—designed to impress and made to last.",
+
       colors: ["White"],
 
       specifications: {
@@ -231,6 +250,9 @@ function Products({ addToCart }) {
       },
 
       stock: "in-stock",
+      features:
+        "Made from high-quality PU leather in a vibrant red shade, this 11.2x5.1 inch bag can be used as a one-shoulder or hand-held accessory. With ample space for mobile phones, wallets, lipsticks, and keys, it’s designed to complement every look, adding a touch of style and functionality.",
+
       colors: ["Red"],
 
       specifications: {
@@ -258,6 +280,9 @@ function Products({ addToCart }) {
       },
 
       stock: "in-stock",
+      features:
+        "Crafted from durable PU leather in a bold blue shade, this 7.6x6 inch bag is perfect for one-shoulder or hand-held use. With ample space for mobile phones and lipsticks, it’s designed for the woman who knows how to blend style with substance.",
+
       colors: ["Blue"],
 
       specifications: {
@@ -286,6 +311,9 @@ function Products({ addToCart }) {
       },
 
       stock: "in-stock",
+      features:
+        "Made from premium PU leather in a vibrant green shade, this 7.6x6 inch bag offers versatile use as a one-shoulder or hand-held accessory. With space for mobile phones and lipsticks, it’s the perfect blend of style and substance for the woman who knows what she wants.",
+
       colors: ["Green"],
 
       specifications: {
