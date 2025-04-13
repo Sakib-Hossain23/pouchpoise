@@ -19,7 +19,7 @@ function RelatedProducts({ addToCart, currentProduct }) {
   const products = [
     {
       id: 1,
-      name: "Bow Barrel Bag",
+      name: "Shoulder bag",
       brand: "Bag",
       price: ["920৳"],
       oldPrice: [""],
@@ -38,6 +38,8 @@ function RelatedProducts({ addToCart, currentProduct }) {
       },
 
       stock: "in-stock",
+      features:
+        "Made from premium PU leather in a charming cream color, this compact bag features an adjustable strap, spacious interior with inner pocket, and a secure zipper closure—blending elegance with everyday functionality.",
       colors: ["Cream"],
 
       specifications: {
@@ -52,17 +54,18 @@ function RelatedProducts({ addToCart, currentProduct }) {
 
     {
       id: 2,
-      name: "Bow Barrel Bag",
+      name: "Shoulder bag",
       brand: "Bag",
       price: ["920৳"],
       oldPrice: [""],
       image: "/img/pp5.jpg",
       images: ["/img/pp5.jpg", "/img/pp6.jpeg", "/img/pp7.jpeg"],
       model: {
-        phoneName: "iPhone 16 Plus",
         color: "Black",
       },
       stock: "in-stock",
+      features:
+        "Crafted from premium PU leather in a sleek black finish, this stylish bag offers a compact 11x5 inch design with an adjustable strap, inner pocket for essentials, and a secure zipper—perfect for adding a touch of elegance to any look.",
       colors: ["Black"],
 
       specifications: {
@@ -77,7 +80,7 @@ function RelatedProducts({ addToCart, currentProduct }) {
 
     {
       id: 3,
-      name: "Bow Barrel Bag",
+      name: "Shoulder bag",
       brand: "Bag",
       price: ["920৳"],
       oldPrice: [""],
@@ -85,11 +88,13 @@ function RelatedProducts({ addToCart, currentProduct }) {
       images: ["/img/pp8.jpg", "/img/pp9.jpeg", "/img/pp10.jpeg"],
 
       model: {
-        phoneName: "iPhone 16 Plus",
         color: "White",
       },
 
       stock: "in-stock",
+      features:
+        "Made from high-quality PU leather in a crisp white shade, this compact 11x5 inch bag features an adjustable strap, secure zipper closure, and an inner pocket—delivering a perfect mix of elegance and everyday charm.",
+
       colors: ["White"],
 
       specifications: {
@@ -112,11 +117,13 @@ function RelatedProducts({ addToCart, currentProduct }) {
       images: ["/img/pp12.jpg", "/img/pp11.jpeg", "/img/pp13.jpeg"],
 
       model: {
-        phoneName: "iPhone 16 Plus",
         color: "Light Pink",
       },
 
       stock: "in-stock",
+      features:
+        "Made from premium PU leather in a soft light pink shade, this stylish 11.7x5.6 inch bag features a spacious 5-inch inner compartment, adjustable strap, and secure zipper closure—designed to impress and made to adore.",
+
       colors: ["Light Pink"],
 
       specifications: {
@@ -140,11 +147,13 @@ function RelatedProducts({ addToCart, currentProduct }) {
       images: ["/img/pp14.jpg", "/img/pp15.jpeg", "/img/pp16.jpeg"],
 
       model: {
-        phoneName: "iPhone 16 Plus",
         color: "Black",
       },
 
       stock: "in-stock",
+      features:
+        "Crafted from glossy PU leather, this bold and compact 9.5x5.5 inch bag is effortlessly stylish. It features an adjustable strap, secure zipper closure, and a well-organized interior—perfect for your standout look.",
+
       colors: ["Black"],
 
       specifications: {
@@ -166,11 +175,13 @@ function RelatedProducts({ addToCart, currentProduct }) {
       image: "/img/pp17.jpg",
       images: ["/img/pp17.jpg", "/img/pp18.jpeg", "/img/pp19.jpeg"],
       model: {
-        phoneName: "iPhone 16 Plus",
         color: "Red",
       },
 
       stock: "in-stock",
+      features:
+        "Made from glossy PU leather in a striking red shade, this 9.5x5.5 inch bag features an adjustable strap, secure zipper closure, and a sleek, stylish design that perfectly complements your bold personality.",
+
       colors: ["Red"],
 
       specifications: {
@@ -197,11 +208,13 @@ function RelatedProducts({ addToCart, currentProduct }) {
         "/img/pp23.jpeg",
       ],
       model: {
-        phoneName: "iPhone 16 Plus",
         color: "White",
       },
 
       stock: "in-stock",
+      features:
+        "Crafted from durable PU leather in a clean white shade, this 8.7x5.1 inch bag offers a sleek, stylish design with an adjustable strap and secure zipper closure—designed to impress and made to last.",
+
       colors: ["White"],
 
       specifications: {
@@ -213,275 +226,97 @@ function RelatedProducts({ addToCart, currentProduct }) {
 
       description: "Designed to impress, made to last ✨",
     },
+
     {
       id: 8,
-      name: "Samsung Galaxy S24 Ultra",
-      brand: "Samsung",
-      price: ["220000৳", "230000৳", "240000৳", "250000৳"],
-      oldPrice: ["225000৳", "235000৳", "245000৳", "255000৳"],
-      image: "/img/sg gray.png",
-      images: [
-        "/img/sg gray.png",
-        "/img/sg black.png",
-        "/img/sg violet.png",
-        "/img/sg blue.png",
-      ],
+      name: "Shoulder bag",
+      brand: "Bag",
+      price: ["850৳"],
+      oldPrice: [""],
+      image: "/img/pp24.jpg",
+      images: ["/img/pp24.jpg"],
       model: {
-        phoneName: "Galaxy S24 Ultra",
-        GB: "256GB",
-        color: "Titanium Gray",
+        color: "Red",
       },
+
       stock: "in-stock",
-      colors: ["Titanium Gray", "Black", "Violet", "Blue"],
-      storages: ["256GB", "512GB", "1TB"],
+      features:
+        "Made from high-quality PU leather in a vibrant red shade, this 11.2x5.1 inch bag can be used as a one-shoulder or hand-held accessory. With ample space for mobile phones, wallets, lipsticks, and keys, it’s designed to complement every look, adding a touch of style and functionality.",
+
+      colors: ["Red"],
+
       specifications: {
-        screenSize: "6.8 inches",
-        processor: "Snapdragon 8 Gen 3",
-        ram: "12GB",
-        battery: "5000mAh",
-        camera: "200MP + 50MP + 10MP + 12MP Rear, 12MP Front",
-        displayType: "Dynamic AMOLED 2X",
-        refreshRate: "120Hz",
+        Origin: "China",
+        Material: "PU leather",
+        Height: " ↕️ 5.1 inch",
+        Width: "↔️ 11.2 inch",
+        Use: "One shoulder/hand held",
+        Capacity: "Mobile phones, wallets, lipsticks, keys etc",
       },
-      description:
-        "The Galaxy S24 Ultra features a powerful Snapdragon 8 Gen 3 chip, a 200MP quad-camera system, and a stunning 6.8-inch Dynamic AMOLED 2X display with 120Hz refresh rate, designed to provide an immersive viewing experience.",
-      warranty: "1 Year Official Warranty",
+
+      description: "This bag Designed to compliment your every look 🌸🫶💯",
     },
 
     {
       id: 9,
-      name: "Vivo X100 Pro",
-      brand: "Vivo",
-      price: ["120000৳", "125000৳", "130000৳"],
-      oldPrice: ["125000৳", "130000৳", "135000৳"],
-      image: "/img/v black.png",
-      images: ["/img/v black.png", "/img/v blue.png", "/img/v orange.png"],
+      name: "Shoulder bag",
+      brand: "Bag",
+      price: ["850৳"],
+      oldPrice: [""],
+      image: "/img/pp25.jpg",
+      images: ["/img/pp25.jpg"],
       model: {
-        phoneName: "Vivo X100 Pro",
-        GB: "256GB",
-        color: "Black",
+        color: "Blue",
       },
-      stock: "out-of-stock",
-      colors: ["Black", "Blue", "Orange"],
-      storages: ["256GB", "512GB"],
+
+      stock: "in-stock",
+      features:
+        "Crafted from durable PU leather in a bold blue shade, this 7.6x6 inch bag is perfect for one-shoulder or hand-held use. With ample space for mobile phones and lipsticks, it’s designed for the woman who knows how to blend style with substance.",
+
+      colors: ["Blue"],
+
       specifications: {
-        screenSize: "6.78 inches",
-        processor: "Dimensity 9300",
-        ram: "12GB",
-        battery: "5400mAh",
-        camera: "50MP + 50MP + 50MP Rear, 32MP Front",
+        Origin: "China",
+        Material: "PU leather",
+        Height: " ↕️ 6 inch",
+        Width: "↔️ 7.6 inch",
+        Use: "One shoulder/hand held",
+        Capacity: " Mobile phones, lipsticks etc",
       },
+
       description:
-        "Vivo X100 Pro comes with a premium ZEISS co-engineered camera system, a massive 5400mAh battery, and a Dimensity 9300 chipset for top-tier performance.",
-      warranty: "1 Year Official Warranty",
+        "A bag designed for the woman who knows style and substance. 🌸🎀",
     },
 
     {
       id: 10,
-      name: "Oppo Find X7 Ultra",
-      brand: "Oppo",
-      price: ["135000৳", "140000৳", "145000৳"],
-      oldPrice: ["140000৳", "145000৳", "150000৳"],
-      image: "/img/oppo black.png",
-      images: [
-        "/img/oppo black.png",
-        "/img/oppo blue.png",
-        "/img/oppo gold.png",
-      ],
+      name: "Shoulder bag",
+      brand: "Bag",
+      price: ["850৳"],
+      oldPrice: [""],
+      image: "/img/pp26.jpg",
+      images: ["/img/pp26.jpg"],
       model: {
-        phoneName: "Oppo Find X7 Ultra",
-        GB: "512GB",
-        color: "Black",
+        color: "Green",
       },
-      stock: "out-of-stock",
-      colors: ["Black", "Blue", "Gold"],
-      storages: ["256GB", "512GB"],
-      specifications: {
-        screenSize: "6.82 inches",
-        processor: "Snapdragon 8 Gen 3",
-        ram: "16GB",
-        battery: "5000mAh",
-        camera: "50MP + 50MP + 64MP + 50MP Rear, 32MP Front",
-      },
-      description:
-        "Oppo Find X7 Ultra features a periscope telephoto camera, an advanced Snapdragon 8 Gen 3 processor, and a 6.82-inch LTPO AMOLED display.",
-      warranty: "1 Year Official Warranty",
-    },
 
-    {
-      id: 11,
-      name: "Samsung Galaxy Z Fold 5",
-      brand: "Samsung",
-      price: ["220000৳", "230000৳", "240000৳"],
-      oldPrice: ["225000৳", "235000৳", "245000৳"],
-      image: "/img/gz black.png",
-      images: ["/img/gz black.png", "/img/gz cream.png", "/img/gz blue.png"],
-      model: {
-        phoneName: "Galaxy Z Fold 5",
-        GB: "512GB",
-        color: "Black",
-      },
       stock: "in-stock",
-      colors: ["Black", "Cream", "Blue"],
-      storages: ["256GB", "512GB", "1TB"],
-      specifications: {
-        screenSize: "7.6 inches (Foldable)",
-        processor: "Snapdragon 8 Gen 2",
-        ram: "12GB",
-        battery: "4400mAh",
-        camera: "50MP + 12MP + 10MP Rear, 10MP + 4MP Front",
-      },
-      description:
-        "The Galaxy Z Fold 5 offers an innovative foldable experience with a 7.6-inch Dynamic AMOLED display, S Pen support, and powerful performance.",
-      warranty: "1 Year Official Warranty",
-    },
+      features:
+        "Made from premium PU leather in a vibrant green shade, this 7.6x6 inch bag offers versatile use as a one-shoulder or hand-held accessory. With space for mobile phones and lipsticks, it’s the perfect blend of style and substance for the woman who knows what she wants.",
 
-    {
-      id: 12,
-      name: "Google Pixel 8 Pro",
-      brand: "Google",
-      price: ["110000৳", "120000৳", "130000৳"],
-      oldPrice: ["120000৳", "130000৳", "140000৳"],
-      image: "/img/gp blue.png",
-      images: ["/img/gp blue.png", "/img/gp black.png", "/img/gp white.png"],
-      model: {
-        phoneName: "Google Pixel 8 Pro",
-        GB: "512GB",
-        color: "Blue",
-      },
-      stock: "in-stock",
-      colors: ["Blue", "Black", "White"],
-      storages: ["128GB", "256GB", "512GB"],
-      specifications: {
-        screenSize: "6.7 inches",
-        processor: "Google Tensor G3",
-        ram: "12GB",
-        battery: "5050mAh",
-        camera: "50MP + 48MP + 48MP Rear, 10.5MP Front",
-      },
-      description:
-        "Google Pixel 8 Pro offers an AI-powered camera system, a premium 6.7-inch LTPO OLED display, and the latest Google Tensor G3 processor for top-tier performance.",
-      warranty: "1 Year Official Warranty",
-    },
+      colors: ["Green"],
 
-    {
-      id: 13,
-      name: "Oppo Reno 11 Pro",
-      brand: "Oppo",
-      price: ["75000৳", "80000৳", "85000৳"],
-      oldPrice: ["80000৳", "85000৳", "90000৳"],
-      image: "/img/or1.jpg",
-      images: ["/img/or1.jpg", "/img/or blue.png", "/img/or silver.png"],
-      model: {
-        phoneName: "Oppo Reno 11 Pro",
-        GB: "256GB",
-        color: "Black",
-      },
-      stock: "in-stock",
-      colors: ["Black", "Blue", "Silver"],
-      storages: ["128GB", "256GB"],
       specifications: {
-        screenSize: "6.74 inches",
-        processor: "Snapdragon 8+ Gen 1",
-        ram: "12GB",
-        battery: "4600mAh",
-        camera: "50MP + 32MP + 8MP Rear, 32MP Front",
+        Origin: "China",
+        Material: "PU leather",
+        Height: " ↕️ 6 inch",
+        Width: "↔️ 7.6 inch",
+        Use: "One shoulder/hand held",
+        Capacity: " Mobile phones, lipsticks etc",
       },
-      description:
-        "Oppo Reno 11 Pro is designed for photography enthusiasts, featuring an ultra-clear 50MP main camera, a powerful processor, and a stylish design.",
-      warranty: "1 Year Official Warranty",
-    },
-    {
-      id: 14,
-      name: "Samsung Galaxy S23 Ultra",
-      brand: "Samsung",
-      price: ["160000৳", "170000৳", "180000৳", "190000৳"],
-      oldPrice: ["165000৳", "175000৳", "185000৳", "195000৳"],
-      image: "/img/s23 gray.png",
-      images: [
-        "/img/s23 gray.png",
-        "/img/s23 black.png",
-        "/img/s23 green.png",
-        "/img/s23 lavender.png",
-      ],
-      model: {
-        phoneName: "Galaxy S23 Ultra",
-        GB: "256GB",
-        color: "Phantom Gray",
-      },
-      stock: "out-of-stock",
-      colors: ["Phantom Gray", "Black", "Green", "Lavender"],
-      storages: ["256GB", "512GB", "1TB"],
-      specifications: {
-        screenSize: "6.8 inches",
-        processor: "Snapdragon 8 Gen 2",
-        ram: "8GB / 12GB",
-        battery: "5000mAh",
-        camera: "200MP + 10MP + 10MP + 12MP Rear, 12MP Front",
-      },
-      description:
-        "The Galaxy S23 Ultra comes with the powerful Snapdragon 8 Gen 2 chip, a 200MP quad-camera setup, and a 6.8-inch Dynamic AMOLED display with 120Hz refresh rate.",
-      warranty: "1 Year Official Warranty",
-    },
 
-    {
-      id: 15,
-      name: "Xiaomi 13 Pro",
-      brand: "Xiaomi",
-      price: ["140000৳", "150000৳", "160000৳"],
-      oldPrice: ["145000৳", "155000৳", "165000৳"],
-      image: "/img/x13pro white.png",
-      images: [
-        "/img/x13pro white.png",
-        "/img/x13pro black.png",
-        "/img/x13pro green.png",
-      ],
-      model: {
-        phoneName: "Xiaomi 13 Pro",
-        GB: "256GB",
-        color: "Ceramic White",
-      },
-      stock: "in-stock",
-      colors: ["Ceramic White", "Black", "Flora Green"],
-      storages: ["256GB", "512GB"],
-      specifications: {
-        screenSize: "6.73 inches",
-        processor: "Snapdragon 8 Gen 2",
-        ram: "12GB",
-        battery: "4820mAh",
-        camera: "50MP + 50MP + 50MP Rear, 32MP Front",
-      },
       description:
-        "The Xiaomi 13 Pro is powered by the Snapdragon 8 Gen 2, featuring a 50MP triple-camera setup co-engineered with Leica, and a 6.73-inch AMOLED display with 120Hz refresh rate.",
-      warranty: "1 Year Official Warranty",
-    },
-
-    {
-      id: 16,
-      name: "OnePlus 11",
-      brand: "OnePlus",
-      price: ["95000৳", "105000৳", "115000৳"],
-      oldPrice: ["98000৳", "108000৳", "118000৳"],
-      image: "/img/one11 black.png",
-      images: ["/img/one11 black.png", "/img/one11 green.png"],
-      model: {
-        phoneName: "OnePlus 11",
-        GB: "256GB",
-        color: "Titan Black",
-      },
-      stock: "in-stock",
-      colors: ["Titan Black", "Eternal Green"],
-      storages: ["128GB", "256GB", "512GB"],
-      specifications: {
-        screenSize: "6.7 inches",
-        processor: "Snapdragon 8 Gen 2",
-        ram: "8GB / 16GB",
-        battery: "5000mAh",
-        camera: "50MP + 48MP + 32MP Rear, 16MP Front",
-      },
-      description:
-        "The OnePlus 11 is powered by the Snapdragon 8 Gen 2, featuring a 50MP triple-camera system co-developed with Hasselblad, and a 6.7-inch AMOLED display with 120Hz refresh rate.",
-      warranty: "1 Year Official Warranty",
+        "A bag designed for the woman who knows style and substance. 🌸🎀",
     },
     // ... (include all your other products here)
   ];
