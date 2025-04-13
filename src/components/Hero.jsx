@@ -4,7 +4,7 @@ import Carousel from "./Carousel";
 import Banner from "./Banner";
 import PG from "./PG";
 
-import NewArrival from "./NewArrival";
+import NewArrivals from "./NewArrivals";
 
 const Hero = ({ addToCart }) => {
   return (
@@ -13,7 +13,7 @@ const Hero = ({ addToCart }) => {
       {/* Remove Search Bar */}
       <Products addToCart={addToCart} />
       <Banner />
-      <NewArrival addToCart={addToCart} />
+      <NewArrivals addToCart={addToCart} />
 
       <PG />
     </div>
