@@ -36,11 +36,13 @@ function Products({ addToCart }) {
       image: "/img/pp17.jpg",
       images: ["/img/pp17.jpg", "/img/pp18.jpeg", "/img/pp19.jpeg"],
       model: {
-        phoneName: "iPhone 16 Plus",
         color: "Red",
       },
 
       stock: "in-stock",
+      features:
+        "Made from glossy PU leather in a striking red shade, this 9.5x5.5 inch bag features an adjustable strap, secure zipper closure, and a sleek, stylish design that perfectly complements your bold personality.",
+
       colors: ["Red"],
 
       specifications: {
@@ -67,6 +69,9 @@ function Products({ addToCart }) {
       },
 
       stock: "in-stock",
+      features:
+        "Crafted from glossy PU leather, this bold and compact 9.5x5.5 inch bag is effortlessly stylish. It features an adjustable strap, secure zipper closure, and a well-organized interior—perfect for your standout look.",
+
       colors: ["Black"],
 
       specifications: {
@@ -93,6 +98,9 @@ function Products({ addToCart }) {
       },
 
       stock: "in-stock",
+      features:
+        "Made from premium PU leather in a soft light pink shade, this stylish 11.7x5.6 inch bag features a spacious 5-inch inner compartment, adjustable strap, and secure zipper closure—designed to impress and made to adore.",
+
       colors: ["Light Pink"],
 
       specifications: {
@@ -124,6 +132,9 @@ function Products({ addToCart }) {
       },
 
       stock: "in-stock",
+      features:
+        "Crafted from durable PU leather in a clean white shade, this 8.7x5.1 inch bag offers a sleek, stylish design with an adjustable strap and secure zipper closure—designed to impress and made to last.",
+
       colors: ["White"],
 
       specifications: {
@@ -134,6 +145,67 @@ function Products({ addToCart }) {
       },
 
       description: "Designed to impress, made to last ✨",
+    },
+
+    {
+      id: 8,
+      name: "Shoulder bag",
+      brand: "Bag",
+      price: ["850৳"],
+      oldPrice: [""],
+      image: "/img/pp24.jpg",
+      images: ["/img/pp24.jpg"],
+      model: {
+        color: "Red",
+      },
+
+      stock: "in-stock",
+      features:
+        "Made from high-quality PU leather in a vibrant red shade, this 11.2x5.1 inch bag can be used as a one-shoulder or hand-held accessory. With ample space for mobile phones, wallets, lipsticks, and keys, it’s designed to complement every look, adding a touch of style and functionality.",
+
+      colors: ["Red"],
+
+      specifications: {
+        Origin: "China",
+        Material: "PU leather",
+        Height: " ↕️ 5.1 inch",
+        Width: "↔️ 11.2 inch",
+        Use: "One shoulder/hand held",
+        Capacity: "Mobile phones, wallets, lipsticks, keys etc",
+      },
+
+      description: "This bag Designed to compliment your every look 🌸🫶💯",
+    },
+
+    {
+      id: 9,
+      name: "Shoulder bag",
+      brand: "Bag",
+      price: ["850৳"],
+      oldPrice: [""],
+      image: "/img/pp25.jpg",
+      images: ["/img/pp25.jpg"],
+      model: {
+        color: "Blue",
+      },
+
+      stock: "in-stock",
+      features:
+        "Crafted from durable PU leather in a bold blue shade, this 7.6x6 inch bag is perfect for one-shoulder or hand-held use. With ample space for mobile phones and lipsticks, it’s designed for the woman who knows how to blend style with substance.",
+
+      colors: ["Blue"],
+
+      specifications: {
+        Origin: "China",
+        Material: "PU leather",
+        Height: " ↕️ 6 inch",
+        Width: "↔️ 7.6 inch",
+        Use: "One shoulder/hand held",
+        Capacity: " Mobile phones, lipsticks etc",
+      },
+
+      description:
+        "A bag designed for the woman who knows style and substance. 🌸🎀",
     },
 
     // Your other product data...
@@ -199,7 +271,7 @@ function Products({ addToCart }) {
 
   return (
     <div className="products-container">
-      <h2>New Arrival</h2>
+      <h2>New Arrivals</h2>
       {loading && <div className="loading-spinner"></div>}
 
       <div
