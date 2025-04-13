@@ -22,7 +22,7 @@ const Fr = () => {
             <i className="fas fa-map-marker-alt"></i>
             <div>
               <small>Store Location</small>
-              <span>ECB Chattar, Malibagh, Dhaka 1217, Bangladesh</span>
+              <span>ECB Chattar, Dhaka 1206, Bangladesh</span>
             </div>
           </div>
 
