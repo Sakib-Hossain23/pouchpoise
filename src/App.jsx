@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   HashRouter as Router,
   Route,
@@ -7,9 +7,10 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "nprogress/nprogress.css";
 import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
+// Import all your components
 import Navbar from "./components/Navbar";
 import Products from "./components/Products";
 import MyProducts from "./components/MyProducts";
@@ -36,19 +37,31 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import DeliveryTerms from "./components/DeliveryTerms";
 import ReturnPolicy from "./components/ReturnPolicy";
 
-function RouteChangeTracker() {
+// Configure NProgress
+NProgress.configure({
+  minimum: 0.3,
+  easing: "ease",
+  speed: 800,
+  showSpinner: false,
+  trickleSpeed: 200,
+});
+
+// Custom component to handle route changes and NProgress
+const ProgressRouter = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
     NProgress.start();
-    const timeout = setTimeout(() => {
+
+    const timer = setTimeout(() => {
       NProgress.done();
-    }, 500); // Simulate load time
-    return () => clearTimeout(timeout);
+    }, 500);
+
+    return () => clearTimeout(timer);
   }, [location.pathname]);
 
-  return null;
-}
+  return children;
+};
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -100,117 +113,120 @@ function App() {
 
   return (
     <Router>
-      <RouteChangeTracker />
-      <ScrollToTop />
-
-      <Navbar
-        cart={cart}
-        wishlist={wishlist}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        setIsSearchModalOpen={setIsSearchModalOpen}
-        setIsRegisterModalOpen={setIsRegisterModalOpen}
-      />
-
-      <DownFooter cart={cart} setIsRegisterModalOpen={setIsRegisterModalOpen} />
-
-      <Routes>
-        <Route path="/" element={<Hero addToCart={addToCart} />} />
-        <Route
-          path="/products"
-          element={
-            <Products
-              addToCart={addToCart}
-              addToWishlist={addToWishlist}
-              removeFromWishlist={removeFromWishlist}
-              wishlist={wishlist}
-            />
-          }
-        />
-        <Route
-          path="/my-products"
-          element={
-            <MyProducts
-              addToCart={addToCart}
-              addToWishlist={addToWishlist}
-              removeFromWishlist={removeFromWishlist}
-              wishlist={wishlist}
-            />
-          }
-        />
-        <Route
-          path="/cart"
-          element={
-            <Cart
-              cart={cart}
-              updateCart={updateCart}
-              totalPrice={calculateTotalPrice()}
-            />
-          }
-        />
-        <Route
-          path="/checkout"
-          element={
-            <Checkout
-              cart={cart}
-              updateCart={updateCart}
-              setOrderHistory={setOrderHistory}
-            />
-          }
-        />
-        <Route
-          path="/product/:id"
-          element={
-            <ModalPage
-              addToCart={addToCart}
-              products={products}
-              addToWishlist={addToWishlist}
-              removeFromWishlist={removeFromWishlist}
-              wishlist={wishlist}
-            />
-          }
-        />
-        <Route
-          path="/order-history"
-          element={<OrderHistory orderHistory={orderHistory} />}
-        />
-        <Route path="/carousel" element={<Carousel />} />
-        <Route path="/featured-categories" element={<FeaturedCategories />} />
-        <Route path="/banner" element={<Banner />} />
-        <Route path="/rl-products" element={<RlProducts />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/terms" element={<TermsAndConditions />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/delivery-terms" element={<DeliveryTerms />} />
-        <Route path="/return-policy" element={<ReturnPolicy />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-
-      {/* Search Modal */}
-      {isSearchModalOpen && searchQuery && (
-        <SearchModal
-          searchQuery={searchQuery}
-          setIsSearchModalOpen={setIsSearchModalOpen}
-          filteredProducts={filteredProducts}
-          setSearchQuery={setSearchQuery}
-          addToCart={addToCart}
-          addToWishlist={addToWishlist}
-          removeFromWishlist={removeFromWishlist}
+      <ProgressRouter>
+        <ScrollToTop />
+        <Navbar
+          cart={cart}
           wishlist={wishlist}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          setIsSearchModalOpen={setIsSearchModalOpen}
+          setIsRegisterModalOpen={setIsRegisterModalOpen}
         />
-      )}
+        <DownFooter
+          cart={cart}
+          setIsRegisterModalOpen={setIsRegisterModalOpen}
+        />
 
-      {/* Register Modal */}
-      <RegisterModal
-        isOpen={isRegisterModalOpen}
-        onClose={() => setIsRegisterModalOpen(false)}
-      />
+        <Routes>
+          <Route path="/carousel" element={<Carousel />} />
+          <Route path="/featured-categories" element={<FeaturedCategories />} />
+          <Route path="/banner" element={<Banner />} />
+          <Route path="/rl-products" element={<RlProducts />} />
+          <Route path="/" element={<Hero addToCart={addToCart} />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/notfound" element={<NotFound />} />
+          <Route path="/terms" element={<TermsAndConditions />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/delivery-terms" element={<DeliveryTerms />} />
+          <Route path="/return-policy" element={<ReturnPolicy />} />
 
-      {/* Footer */}
-      <Fr />
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                cart={cart}
+                updateCart={updateCart}
+                totalPrice={calculateTotalPrice()}
+              />
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <Checkout
+                cart={cart}
+                updateCart={updateCart}
+                setOrderHistory={setOrderHistory}
+              />
+            }
+          />
+          <Route
+            path="/product/:id"
+            element={
+              <ModalPage
+                addToCart={addToCart}
+                products={products}
+                addToWishlist={addToWishlist}
+                removeFromWishlist={removeFromWishlist}
+                wishlist={wishlist}
+              />
+            }
+          />
+          <Route
+            path="/order-history"
+            element={<OrderHistory orderHistory={orderHistory} />}
+          />
+          <Route
+            path="/my-products"
+            element={
+              <MyProducts
+                addToCart={addToCart}
+                addToWishlist={addToWishlist}
+                removeFromWishlist={removeFromWishlist}
+                wishlist={wishlist}
+              />
+            }
+          />
+          <Route
+            path="/products"
+            element={
+              <Products
+                addToCart={addToCart}
+                addToWishlist={addToWishlist}
+                removeFromWishlist={removeFromWishlist}
+                wishlist={wishlist}
+              />
+            }
+          />
+        </Routes>
 
-      {/* Chatbot Feature */}
-      <Chatbot />
+        {/* Search Modal */}
+        {isSearchModalOpen && searchQuery && (
+          <SearchModal
+            searchQuery={searchQuery}
+            setIsSearchModalOpen={setIsSearchModalOpen}
+            filteredProducts={filteredProducts}
+            setSearchQuery={setSearchQuery}
+            addToCart={addToCart}
+            addToWishlist={addToWishlist}
+            removeFromWishlist={removeFromWishlist}
+            wishlist={wishlist}
+          />
+        )}
+
+        {/* Register Modal */}
+        <RegisterModal
+          isOpen={isRegisterModalOpen}
+          onClose={() => setIsRegisterModalOpen(false)}
+        />
+
+        {/* Footer */}
+        <Fr />
+
+        {/* Chatbot Feature */}
+        <Chatbot />
+      </ProgressRouter>
     </Router>
   );
 }
