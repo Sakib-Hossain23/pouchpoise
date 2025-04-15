@@ -221,3 +221,54 @@ strong,
 .search-result-item div {
   font-size: 16px;
 }
+
+/*nprogress*/
+
+/* Custom NProgress styles */
+/* Custom NProgress styles */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #007bff; /* Change this to your preferred color */
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px; /* Make the bar thicker or thinner */
+}
+
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #007bff, 0 0 5px #007bff;
+  opacity: 1;
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+/*jj
+
+.content-loading {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}*/
+
+/* Custom NProgress styles */
+#nprogress .bar {
+  background: #f27f20 !important;
+  height: 2px !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #f27f20, 0 0 5px #f27f20 !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #f27f20 !important;
+  border-left-color: #f27f20 !important;
+}
