@@ -1,7 +1,14 @@
-import React, { useState } from "react";
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {
+  HashRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "nprogress/nprogress.css";
+import NProgress from "nprogress";
 
 import Navbar from "./components/Navbar";
 import Products from "./components/Products";
@@ -28,6 +35,20 @@ import TermsAndConditions from "./components/TermsAndConditions";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import DeliveryTerms from "./components/DeliveryTerms";
 import ReturnPolicy from "./components/ReturnPolicy";
+
+function RouteChangeTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    NProgress.start();
+    const timeout = setTimeout(() => {
+      NProgress.done();
+    }, 500); // Simulate load time
+    return () => clearTimeout(timeout);
+  }, [location.pathname]);
+
+  return null;
+}
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -79,7 +100,9 @@ function App() {
 
   return (
     <Router>
+      <RouteChangeTracker />
       <ScrollToTop />
+
       <Navbar
         cart={cart}
         wishlist={wishlist}
@@ -88,21 +111,33 @@ function App() {
         setIsSearchModalOpen={setIsSearchModalOpen}
         setIsRegisterModalOpen={setIsRegisterModalOpen}
       />
+
       <DownFooter cart={cart} setIsRegisterModalOpen={setIsRegisterModalOpen} />
 
       <Routes>
-        <Route path="/carousel" element={<Carousel />} />
-        <Route path="/featured-categories" element={<FeaturedCategories />} />
-        <Route path="/banner" element={<Banner />} />
-        <Route path="/rl-products" element={<RlProducts />} />
         <Route path="/" element={<Hero addToCart={addToCart} />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/notfound" element={<NotFound />} />
-        <Route path="/terms" element={<TermsAndConditions />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/delivery-terms" element={<DeliveryTerms />} />
-        <Route path="/return-policy" element={<ReturnPolicy />} />
-
+        <Route
+          path="/products"
+          element={
+            <Products
+              addToCart={addToCart}
+              addToWishlist={addToWishlist}
+              removeFromWishlist={removeFromWishlist}
+              wishlist={wishlist}
+            />
+          }
+        />
+        <Route
+          path="/my-products"
+          element={
+            <MyProducts
+              addToCart={addToCart}
+              addToWishlist={addToWishlist}
+              removeFromWishlist={removeFromWishlist}
+              wishlist={wishlist}
+            />
+          }
+        />
         <Route
           path="/cart"
           element={
@@ -139,28 +174,16 @@ function App() {
           path="/order-history"
           element={<OrderHistory orderHistory={orderHistory} />}
         />
-        <Route
-          path="/my-products"
-          element={
-            <MyProducts
-              addToCart={addToCart}
-              addToWishlist={addToWishlist}
-              removeFromWishlist={removeFromWishlist}
-              wishlist={wishlist}
-            />
-          }
-        />
-        <Route
-          path="/products"
-          element={
-            <Products
-              addToCart={addToCart}
-              addToWishlist={addToWishlist}
-              removeFromWishlist={removeFromWishlist}
-              wishlist={wishlist}
-            />
-          }
-        />
+        <Route path="/carousel" element={<Carousel />} />
+        <Route path="/featured-categories" element={<FeaturedCategories />} />
+        <Route path="/banner" element={<Banner />} />
+        <Route path="/rl-products" element={<RlProducts />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/delivery-terms" element={<DeliveryTerms />} />
+        <Route path="/return-policy" element={<ReturnPolicy />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       {/* Search Modal */}
