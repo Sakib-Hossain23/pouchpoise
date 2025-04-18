@@ -5,6 +5,7 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
+import ReactGA from "react-ga4";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NProgress from "nprogress";
@@ -37,6 +38,9 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import DeliveryTerms from "./components/DeliveryTerms";
 import ReturnPolicy from "./components/ReturnPolicy";
 
+// Google Analytics Tracking ID
+const TRACKING_ID = "G-2K5PGD0E62"; // ← Replace with your actual GA4 ID
+
 // Configure NProgress
 NProgress.configure({
   minimum: 0.3,
@@ -46,19 +50,29 @@ NProgress.configure({
   trickleSpeed: 200,
 });
 
-// Custom component to handle route changes and NProgress
+// Custom hook for route-based GA tracking
+const usePageTracking = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: location.pathname + location.search,
+    });
+  }, [location]);
+};
+
+// Custom component to handle route changes for NProgress & GA
 const ProgressRouter = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
     NProgress.start();
-
-    const timer = setTimeout(() => {
-      NProgress.done();
-    }, 500);
-
+    const timer = setTimeout(() => NProgress.done(), 500);
     return () => clearTimeout(timer);
   }, [location.pathname]);
+
+  usePageTracking();
 
   return children;
 };
@@ -70,6 +84,10 @@ function App() {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [wishlist, setWishlist] = useState([]);
+
+  useEffect(() => {
+    ReactGA.initialize(TRACKING_ID);
+  }, []);
 
   const addToCart = (newProduct) => {
     const existingProductIndex = cart.findIndex(
@@ -129,18 +147,17 @@ function App() {
         />
 
         <Routes>
+          <Route path="/" element={<Hero addToCart={addToCart} />} />
           <Route path="/carousel" element={<Carousel />} />
           <Route path="/featured-categories" element={<FeaturedCategories />} />
           <Route path="/banner" element={<Banner />} />
           <Route path="/rl-products" element={<RlProducts />} />
-          <Route path="/" element={<Hero addToCart={addToCart} />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/notfound" element={<NotFound />} />
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/delivery-terms" element={<DeliveryTerms />} />
           <Route path="/return-policy" element={<ReturnPolicy />} />
-
           <Route
             path="/cart"
             element={
@@ -201,7 +218,6 @@ function App() {
           />
         </Routes>
 
-        {/* Search Modal */}
         {isSearchModalOpen && searchQuery && (
           <SearchModal
             searchQuery={searchQuery}
@@ -215,16 +231,12 @@ function App() {
           />
         )}
 
-        {/* Register Modal */}
         <RegisterModal
           isOpen={isRegisterModalOpen}
           onClose={() => setIsRegisterModalOpen(false)}
         />
 
-        {/* Footer */}
         <Fr />
-
-        {/* Chatbot Feature */}
         <Chatbot />
       </ProgressRouter>
     </Router>
