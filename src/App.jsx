@@ -5,7 +5,6 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import ReactGA from "react-ga4";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NProgress from "nprogress";
@@ -38,9 +37,6 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import DeliveryTerms from "./components/DeliveryTerms";
 import ReturnPolicy from "./components/ReturnPolicy";
 
-// Google Analytics Tracking ID
-const TRACKING_ID = "G-2K5PGD0E62"; // ← Replace with your actual GA4 ID
-
 // Configure NProgress
 NProgress.configure({
   minimum: 0.3,
@@ -50,29 +46,26 @@ NProgress.configure({
   trickleSpeed: 200,
 });
 
-// Custom hook for route-based GA tracking
-const usePageTracking = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    ReactGA.send({
-      hitType: "pageview",
-      page: location.pathname + location.search,
-    });
-  }, [location]);
-};
-
-// Custom component to handle route changes for NProgress & GA
+// Custom component to handle route changes and NProgress
 const ProgressRouter = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
     NProgress.start();
-    const timer = setTimeout(() => NProgress.done(), 500);
+
+    // Track page view in Google Analytics
+    if (window.gtag) {
+      window.gtag("config", "G-2K5PGD0E62", {
+        page_path: location.pathname,
+      });
+    }
+
+    const timer = setTimeout(() => {
+      NProgress.done();
+    }, 500);
+
     return () => clearTimeout(timer);
   }, [location.pathname]);
-
-  usePageTracking();
 
   return children;
 };
@@ -84,10 +77,6 @@ function App() {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [wishlist, setWishlist] = useState([]);
-
-  useEffect(() => {
-    ReactGA.initialize(TRACKING_ID);
-  }, []);
 
   const addToCart = (newProduct) => {
     const existingProductIndex = cart.findIndex(
@@ -104,6 +93,20 @@ function App() {
     } else {
       setCart([...cart, newProduct]);
     }
+
+    // Track add to cart event in Google Analytics
+    if (window.gtag) {
+      window.gtag("event", "add_to_cart", {
+        items: [
+          {
+            id: newProduct.id,
+            name: newProduct.name,
+            price: newProduct.price,
+            quantity: newProduct.quantity,
+          },
+        ],
+      });
+    }
   };
 
   const updateCart = (updatedCart) => {
@@ -119,6 +122,19 @@ function App() {
 
   const addToWishlist = (product) => {
     setWishlist([...wishlist, product]);
+
+    // Track add to wishlist event in Google Analytics
+    if (window.gtag) {
+      window.gtag("event", "add_to_wishlist", {
+        items: [
+          {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+          },
+        ],
+      });
+    }
   };
 
   const removeFromWishlist = (productId) => {
@@ -128,6 +144,25 @@ function App() {
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // Track checkout events
+  const handleCheckout = (orderData) => {
+    setOrderHistory([...orderHistory, orderData]);
+
+    if (window.gtag) {
+      window.gtag("event", "purchase", {
+        transaction_id: orderData.orderId,
+        value: orderData.total,
+        currency: "USD",
+        items: orderData.items.map((item) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+        })),
+      });
+    }
+  };
 
   return (
     <Router>
@@ -147,17 +182,18 @@ function App() {
         />
 
         <Routes>
-          <Route path="/" element={<Hero addToCart={addToCart} />} />
           <Route path="/carousel" element={<Carousel />} />
           <Route path="/featured-categories" element={<FeaturedCategories />} />
           <Route path="/banner" element={<Banner />} />
           <Route path="/rl-products" element={<RlProducts />} />
+          <Route path="/" element={<Hero addToCart={addToCart} />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/notfound" element={<NotFound />} />
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/delivery-terms" element={<DeliveryTerms />} />
           <Route path="/return-policy" element={<ReturnPolicy />} />
+
           <Route
             path="/cart"
             element={
@@ -174,7 +210,7 @@ function App() {
               <Checkout
                 cart={cart}
                 updateCart={updateCart}
-                setOrderHistory={setOrderHistory}
+                setOrderHistory={handleCheckout}
               />
             }
           />
@@ -218,6 +254,7 @@ function App() {
           />
         </Routes>
 
+        {/* Search Modal */}
         {isSearchModalOpen && searchQuery && (
           <SearchModal
             searchQuery={searchQuery}
@@ -231,12 +268,16 @@ function App() {
           />
         )}
 
+        {/* Register Modal */}
         <RegisterModal
           isOpen={isRegisterModalOpen}
           onClose={() => setIsRegisterModalOpen(false)}
         />
 
+        {/* Footer */}
         <Fr />
+
+        {/* Chatbot Feature */}
         <Chatbot />
       </ProgressRouter>
     </Router>
