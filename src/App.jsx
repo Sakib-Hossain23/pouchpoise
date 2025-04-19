@@ -36,7 +36,6 @@ import TermsAndConditions from "./components/TermsAndConditions";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import DeliveryTerms from "./components/DeliveryTerms";
 import ReturnPolicy from "./components/ReturnPolicy";
-import Analytics from "./components/Analytics";
 
 // Configure NProgress
 NProgress.configure({
@@ -47,13 +46,24 @@ NProgress.configure({
   trickleSpeed: 200,
 });
 
-// Custom component to handle route changes for NProgress
+// Custom component to handle route changes and NProgress
 const ProgressRouter = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
     NProgress.start();
-    const timer = setTimeout(() => NProgress.done(), 500);
+
+    // Track page view in Google Analytics
+    if (window.gtag) {
+      window.gtag("config", "G-2K5PGD0E62", {
+        page_path: location.pathname,
+      });
+    }
+
+    const timer = setTimeout(() => {
+      NProgress.done();
+    }, 500);
+
     return () => clearTimeout(timer);
   }, [location.pathname]);
 
@@ -83,6 +93,20 @@ function App() {
     } else {
       setCart([...cart, newProduct]);
     }
+
+    // Track add to cart event in Google Analytics
+    if (window.gtag) {
+      window.gtag("event", "add_to_cart", {
+        items: [
+          {
+            id: newProduct.id,
+            name: newProduct.name,
+            price: newProduct.price,
+            quantity: newProduct.quantity,
+          },
+        ],
+      });
+    }
   };
 
   const updateCart = (updatedCart) => {
@@ -98,6 +122,19 @@ function App() {
 
   const addToWishlist = (product) => {
     setWishlist([...wishlist, product]);
+
+    // Track add to wishlist event in Google Analytics
+    if (window.gtag) {
+      window.gtag("event", "add_to_wishlist", {
+        items: [
+          {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+          },
+        ],
+      });
+    }
   };
 
   const removeFromWishlist = (productId) => {
@@ -108,10 +145,28 @@ function App() {
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // Track checkout events
+  const handleCheckout = (orderData) => {
+    setOrderHistory([...orderHistory, orderData]);
+
+    if (window.gtag) {
+      window.gtag("event", "purchase", {
+        transaction_id: orderData.orderId,
+        value: orderData.total,
+        currency: "USD",
+        items: orderData.items.map((item) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+        })),
+      });
+    }
+  };
+
   return (
     <Router>
       <ProgressRouter>
-        <Analytics /> {/* Add Analytics component here */}
         <ScrollToTop />
         <Navbar
           cart={cart}
@@ -125,18 +180,20 @@ function App() {
           cart={cart}
           setIsRegisterModalOpen={setIsRegisterModalOpen}
         />
+
         <Routes>
-          <Route path="/" element={<Hero addToCart={addToCart} />} />
           <Route path="/carousel" element={<Carousel />} />
           <Route path="/featured-categories" element={<FeaturedCategories />} />
           <Route path="/banner" element={<Banner />} />
           <Route path="/rl-products" element={<RlProducts />} />
+          <Route path="/" element={<Hero addToCart={addToCart} />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/notfound" element={<NotFound />} />
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/delivery-terms" element={<DeliveryTerms />} />
           <Route path="/return-policy" element={<ReturnPolicy />} />
+
           <Route
             path="/cart"
             element={
@@ -153,7 +210,7 @@ function App() {
               <Checkout
                 cart={cart}
                 updateCart={updateCart}
-                setOrderHistory={setOrderHistory}
+                setOrderHistory={handleCheckout}
               />
             }
           />
@@ -196,6 +253,8 @@ function App() {
             }
           />
         </Routes>
+
+        {/* Search Modal */}
         {isSearchModalOpen && searchQuery && (
           <SearchModal
             searchQuery={searchQuery}
@@ -208,11 +267,17 @@ function App() {
             wishlist={wishlist}
           />
         )}
+
+        {/* Register Modal */}
         <RegisterModal
           isOpen={isRegisterModalOpen}
           onClose={() => setIsRegisterModalOpen(false)}
         />
+
+        {/* Footer */}
         <Fr />
+
+        {/* Chatbot Feature */}
         <Chatbot />
       </ProgressRouter>
     </Router>
